@@ -3,12 +3,19 @@
 void display(void)
 {
   glClear(GL_COLOR_BUFFER_BIT);
+  glColor3d(1.0, 0.0, 0.0);
+  glBegin(GL_POLYGON);
+  glVertex2d(-0.9, -0.9);
+  glVertex2d(0.9, -0.9);
+  glVertex2d(0.9, 0.9);
+  glVertex2d(-0.9, 0.9);
+  glEnd();
   glFlush();
 }
 
 void init(void)
 {
-  glClearColor(0.0, 0.0, 1.0, 1.0);
+  glClearColor(1.0, 1.0, 1.0, 1.0);
 }
 
 int main(int argc, char *argv[])
