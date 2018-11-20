@@ -15,6 +15,17 @@ void display(void)
   glEnd();
   glFlush();
 }
+void resize(int w, int h)
+{
+  /* ウィンドウ全体をビューポートにする */
+  glViewport(0, 0, w, h);
+
+  /* 変換行列の初期化 */
+  glLoadIdentity();
+
+  /* スクリーン上の表示領域をビューポートの大きさに比例させる */
+  glOrtho(-w / 200.0, w / 200.0, -h / 200.0, h / 200.0, -1.0, 1.0);
+}
 
 void init(void)
 {
@@ -23,9 +34,12 @@ void init(void)
 
 int main(int argc, char *argv[])
 {
+  glutInitWindowPosition(100, 100);
+  glutInitWindowSize(320, 240);
   glutInit(&argc, argv);
   glutCreateWindow(argv[0]);
   glutDisplayFunc(display);
+  glutReshapeFunc(resize);
   init();
   glutMainLoop();
   return 0;
